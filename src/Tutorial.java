@@ -1,10 +1,14 @@
-package main;
+package src;
+
+import Services.FileService;
 
 import java.util.Scanner;
 
 public class Tutorial {
   private String title;
   private Lesson[] lessons;
+
+  private static final FileService fs = ServiceHolder.fileService;
 
   public void setTitle(String title) {
     this.title = title;
@@ -19,6 +23,15 @@ public class Tutorial {
     Scanner scanner = new Scanner(System.in);
     String lessonTitle = scanner.nextLine();
     System.out.println(lessonTitle);
+  }
+
+  public void saveTutorialName() {
+    fs.mkdirs("Tutorials/" + title + "/Lessons");
+  }
+
+  public void printInfo() {
+    System.out.println("Tutorial Title = " + title);
+
   }
 
 }
